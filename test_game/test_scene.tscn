@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqn5e1nyo4e8w"]
+
+[ext_resource type="Script" uid="uid://cgamcapiqe4k" path="res://test_game/test_scene.gd" id="1_33gxk"]
+
+[node name="TestScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_33gxk")
+
+[node name="PlayerStats" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 56.0
+offset_right = 464.0
+offset_bottom = 79.0
+text = "The Player has 999 Health and a strength of 999"
+
+[node name="EnemyStats" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 168.0
+offset_right = 440.0
+offset_bottom = 191.0
+text = "Basic Enemies have 999 Health and a strength of 999"

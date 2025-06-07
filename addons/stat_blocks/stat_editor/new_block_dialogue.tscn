@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqc64ught32ew"]
+
+[ext_resource type="Script" uid="uid://je03fsfo0fhl" path="res://addons/stat_blocks/stat_editor/new_block_dialogue.gd" id="1_5lwvy"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5lwvy"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_ilsyd"]
+events = [SubResource("InputEventKey_5lwvy")]
+
+[node name="NewBlockDialogue" type="Window"]
+title = "Create New Stat Block"
+initial_position = 4
+size = Vector2i(300, 80)
+always_on_top = true
+script = ExtResource("1_5lwvy")
+
+[node name="Background" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Root" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root"]
+layout_mode = 2
+
+[node name="NameInput" type="LineEdit" parent="Root/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Name"
+
+[node name="Buttons" type="HBoxContainer" parent="Root/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="CreateButton" type="Button" parent="Root/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+shortcut = SubResource("Shortcut_ilsyd")
+text = "    Create    "
+
+[node name="CancelButton" type="Button" parent="Root/VBoxContainer/Buttons"]
+layout_mode = 2
+text = "    Cancel    "
+
+[connection signal="pressed" from="Root/VBoxContainer/Buttons/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="Root/VBoxContainer/Buttons/CancelButton" to="." method="_on_cancel_button_pressed"]

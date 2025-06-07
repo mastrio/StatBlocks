@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7nqt3iwnaww3"]
+
+[ext_resource type="Script" uid="uid://5tmd4cnyge3l" path="res://addons/stat_blocks/stat_editor/stat_editor.gd" id="1_oasyl"]
+
+[node name="StatEditor" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_oasyl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NavBackground" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NavBackground"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="NavBar" type="HBoxContainer" parent="VBoxContainer/NavBackground/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/NavBackground/MarginContainer/NavBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "    Save    "
+
+[node name="RevertButton" type="Button" parent="VBoxContainer/NavBackground/MarginContainer/NavBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "    Revert    "
+
+[node name="RefreshButton" type="Button" parent="VBoxContainer/NavBackground/MarginContainer/NavBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "    Refresh    "
+
+[node name="Title" type="Label" parent="VBoxContainer/NavBackground/MarginContainer/NavBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Stat Block Editor "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BaseContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatBlockListContainer" type="PanelContainer" parent="VBoxContainer/BaseContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/BaseContainer/StatBlockListContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BlockNewButton" type="Button" parent="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "    New    "
+
+[node name="BlockDeleteButton" type="Button" parent="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "    Delete    "
+
+[node name="BlockList" type="ItemList" parent="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
+item_count = 3
+item_0/text = "THis is a test one"
+item_1/text = "Another one!!!!"
+item_2/text = "gabagabgasgisohgodifhgd"
+
+[node name="StatsContainer" type="PanelContainer" parent="VBoxContainer/BaseContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/BaseContainer/StatsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="StatButtons" type="HBoxContainer" parent="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StatNewButton" type="Button" parent="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer/MarginContainer/StatButtons"]
+layout_mode = 2
+text = "    New    "
+
+[node name="StatDeleteButton" type="Button" parent="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer/MarginContainer/StatButtons"]
+layout_mode = 2
+text = "    Delete    "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="VBoxContainer/NavBackground/MarginContainer/NavBar/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavBackground/MarginContainer/NavBar/RevertButton" to="." method="_on_revert_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavBackground/MarginContainer/NavBar/RefreshButton" to="." method="_on_refresh_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer/MarginContainer/HBoxContainer/BlockNewButton" to="." method="_on_new_block_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer/MarginContainer/HBoxContainer/BlockDeleteButton" to="." method="_on_delete_block_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/BaseContainer/StatBlockListContainer/VBoxContainer/BlockList" to="." method="_on_block_list_item_selected"]
+[connection signal="pressed" from="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer/MarginContainer/StatButtons/StatNewButton" to="." method="_on_stat_new_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BaseContainer/StatsContainer/VBoxContainer/MarginContainer/StatButtons/StatDeleteButton" to="." method="_on_stat_delete_button_pressed"]
