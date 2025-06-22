@@ -68,7 +68,7 @@ func set_selected_block(value: int) -> void:
 
 func set_has_unsaved_changes(value: bool) -> void:
 	if value:
-		%SaveButton.text = "    Save*    "
+		%SaveButton.text = "    Save(*)    "
 		%RevertButton.disabled = false
 	else:
 		%SaveButton.text = "    Save    "

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://05jfufwo4eml" path="res://addons/stat_blocks/stat_editor/stat.gd" id="1_0lq6o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wfvwg"]
+font_size = 12
 
 [node name="Stat" type="HBoxContainer"]
 anchors_preset = 15
@@ -30,6 +31,7 @@ text_overrun_behavior = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -1000.0
 max_value = 9.22337e+18
 step = 0.001
 allow_greater = true
